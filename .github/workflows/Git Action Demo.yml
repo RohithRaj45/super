@@ -13,8 +13,14 @@ jobs:
   build-db:
     needs: build-app
     runs-on: windows-latest
+    steps:
+      - name: IN build-db
+        run: echo build-db
   package:
    needs: [build-app,build-db]
+   steps:
+     - name: In Package
+       run: echo package
    runs-on: ubuntu
 on: 
   push:

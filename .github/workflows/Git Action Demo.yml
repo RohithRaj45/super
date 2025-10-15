@@ -1,7 +1,6 @@
 name: "Basic Workflow"
 jobs:
   build-app:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script

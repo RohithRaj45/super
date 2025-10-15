@@ -1,14 +1,6 @@
 name: "Basic Workflow"
-on: 
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
-  workflow_dispatch:
-
-  # A Workflow run is made up of one or more jobs that can run sequentially or in parallel
-  jobs:
-    build-app:
+jobs:
+   build-app:
      runs-on: ubuntu-latest
      steps:
        - uses: actions/checkout@v3
@@ -18,12 +10,20 @@ on:
          run: |
            echo Add other actions to build,
            echo test, and deploy your project
-    build-db:
-      needs: build
-      runs-on: windows-latest
-    package:
-     needs: [build-app,build-db]
-     runs-on: ubuntu
+   build-db:
+     needs: build-app
+     runs-on: windows-latest
+   package:
+    needs: [build-app,build-db]
+    runs-on: ubuntu
+on: 
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+  # A Workflow run is made up of one or more jobs that can run sequentially or in parallel
     
       
     
